@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweeté Pâtisserie | Cake & Pastry</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="announcement">
+        MANISNYA SETIAP MOMEN ✦ GRATIS ONGKIR UNTUK PEMBELIAN DI ATAS RP250.000
+    </div>
+
+    <header class="site-header">
+        <a class="brand" href="#home">
+            <span class="brand-mark">s.</span>
+            <span class="brand-name">sweeté<small>PÂTISSERIE</small></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="#home">Home</a>
+            <a href="#products">Our Menu</a>
+            <a href="#tracking">Lacak Pesanan</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#story">Our Story</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="cart-button" id="openCart">
+            <span>Keranjang</span>
+            <span class="bag-icon">♡</span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow"><span></span> DIBUAT DENGAN SEPENUH HATI</p>
+
+                <h1>
+                    Sedikit manis,
+                    <br>
+                    membawa <em>banyak bahagia.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Aneka kue dan pastry cantik untuk menemani momen spesialmu.
+                    Selalu fresh, dibuat dengan bahan pilihan dan penuh cinta.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-dark" href="#products">
+                        Lihat Koleksi <span>↗</span>
+                    </a>
+                    <a class="text-link" href="#story">Cerita Kami</a>
+                </div>
+
+                <div class="hero-note">
+                    <span class="note-star">✳</span>
+                    <span>
+                        SELALU FRESH SETIAP HARI
+                        <br>
+                        <small>Dibuat dalam jumlah terbatas, dengan penuh cinta.</small>
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image"></div>
+                <div class="hero-sticker">BAKED<br>WITH<br><i>♡</i></div>
+                <div class="hero-caption">SENI DALAM<br>SETIAP GIGITAN</div>
+            </div>
+
+            <div class="hero-side-label">
+                SWEET MOMENTS, MADE BEAUTIFUL — EST. 2024
+            </div>
+        </section>
+
+        <!-- CATEGORY STRIP -->
+        <section class="category-strip">
+            <span>CAKES</span><i>✳</i>
+            <span>PASTRIES</span><i>✳</i>
+            <span>COOKIES</span><i>✳</i>
+            <span>DESSERTS</span><i>✳</i>
+            <span>MADE WITH LOVE</span>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products-section section-pad" id="products">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">KOLEKSI PILIHAN SWEETÉ</p>
+                    <h2>Temukan rasa<br><em>manis favoritmu.</em></h2>
+                </div>
+
+                <p class="section-intro">
+                    Dari pastry lembut hingga kue spesial untuk hari istimewa.
+                    Temukan camilan favorit yang siap menemani harimu.
+                </p>
+            </div>
+
+            <div class="shop-tools">
+                <div class="filters" id="filters">
+                    <button class="filter-btn active" data-category="all">Semua Produk</button>
+                    <button class="filter-btn" data-category="cake">Cakes</button>
+                    <button class="filter-btn" data-category="pastry">Pastries</button>
+                    <button class="filter-btn" data-category="cookies">Cookies</button>
+                    <button class="filter-btn" data-category="dessert">Desserts</button>
+                </div>
+
+                <label class="search-box">
+                    <span>⌕</span>
+                    <input id="searchInput" type="search" placeholder="Cari kue favoritmu...">
+                </label>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+
+            <p class="empty-state hidden" id="emptyState">
+                Maaf, produk tidak ditemukan. Coba kata kunci lainnya, ya!
+            </p>
+        </section>
+
+        <!-- ORDER TRACKING -->
+        <section class="tracking-section section-pad" id="tracking">
+            <div class="tracking-heading">
+                <p class="eyebrow">PANTAU PESANANMU</p>
+                <h2>Pesananmu sampai<br><em>mana, ya?</em></h2>
+                <p>Masukkan kode pesanan dan nomor WhatsApp yang digunakan saat checkout.</p>
+            </div>
+
+            <form id="trackingForm" class="tracking-form">
+                <label>
+                    Kode pesanan
+                    <input type="text" id="trackingCode" placeholder="Contoh: SWT-123456" required>
+                </label>
+
+                <label>
+                    Nomor WhatsApp
+                    <input type="tel" id="trackingPhone" placeholder="Nomor saat checkout" required>
+                </label>
+
+                <button class="button button-dark" type="submit" id="trackingButton">
+                    Lacak Pesanan <span>↗</span>
+                </button>
+            </form>
+
+            <div id="trackingResult" class="tracking-result hidden"></div>
+        </section>
+
+        <!-- CUSTOMER REVIEWS -->
+        <section class="reviews-section section-pad" id="reviews">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">CERITA MANIS PELANGGAN</p>
+                    <h2>Kata mereka<br><em>tentang Sweeté.</em></h2>
+                </div>
+                <p class="section-intro">
+                    Setiap cerita dan pengalaman pelanggan berarti bagi kami.
+                </p>
+            </div>
+
+            <div class="reviews-grid" id="reviewsGrid">
+                <p class="empty-state">Memuat ulasan pelanggan...</p>
+            </div>
+        </section>
+
+        <!-- OUR STORY -->
+        <section class="story-section" id="story">
+            <div class="story-image"></div>
+
+            <div class="story-copy">
+                <p class="eyebrow">CERITA DARI DAPUR KAMI</p>
+                <h2>Bukan sekadar dessert.<br>Ada <em>cinta</em> di dalamnya.</h2>
+
+                <p>
+                    Di Sweeté, kami percaya bahwa kebahagiaan sering kali
+                    datang dari hal sederhana: pagi yang tenang, berbagi
+                    sepotong kue, atau menikmati pastry favorit.
+                </p>
+
+                <p>
+                    Setiap produk dibuat dengan penuh perhatian,
+                    menggunakan bahan pilihan dan sepenuh hati.
+                    Karena setiap momen pantas terasa lebih manis.
+                </p>
+
+                <a class="text-link" href="#products">Temukan kebahagiaanmu ↗</a>
+            </div>
+        </section>
+
+        <!-- QUOTE -->
+        <section class="quote-section">
+            <span class="quote-flower">✳</span>
+            <p>“Hidup terasa lebih indah<br><em>dengan sedikit rasa manis.</em>”</p>
+            <small>— SWEETÉ PHILOSOPHY —</small>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter-section" id="contact">
+            <div>
+                <p class="eyebrow">KABAR MANIS DARI SWEETÉ</p>
+                <h2>Ada yang manis <em>menantimu.</em></h2>
+                <p>Dapatkan informasi produk terbaru, promo spesial, dan kejutan menarik lainnya.</p>
+            </div>
+
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="newsletterEmail" placeholder="Masukkan alamat email..." required>
+                <button type="submit">DAFTAR ↗</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <a class="brand footer-brand" href="#home">
+            <span class="brand-mark">s.</span>
+            <span class="brand-name">sweeté<small>PÂTISSERIE</small></span>
+        </a>
+
+        <p>Dibuat dengan cinta, dipanggang dengan bahagia.</p>
+
+        <div class="store-information" id="storeInformation"></div>
+
+        <div class="footer-bottom">
+            <span>© 2026 SWEETÉ PÂTISSERIE</span>
+            <span>SETIAP GIGITAN PENUH KEBAHAGIAAN.</span>
+            <a href="#home">KEMBALI KE ATAS ↑</a>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="#" class="whatsapp-float" id="whatsappButton" target="_blank" rel="noopener" aria-label="Hubungi Sweeté melalui WhatsApp">
+        <span>☏</span>
+        <small>Chat Sweeté</small>
+    </a>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CART DRAWER -->
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <p class="eyebrow">PILIHAN MANISMU</p>
+                <h2>Keranjang <em>(<span id="drawerCount">0</span>)</em></h2>
+            </div>
+            <button class="close-button" id="closeCart">×</button>
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="cart-empty" id="cartEmpty">
+            <span>♡</span>
+            <h3>Keranjangmu masih kosong.</h3>
+            <p>Yuk, pilih sesuatu yang manis untuk dinikmati!</p>
+            <button class="button button-dark" id="continueShopping">Lihat Produk</button>
+        </div>
+
+        <div class="cart-footer hidden" id="cartFooter">
+            <div class="subtotal-row">
+                <span>Total sementara</span>
+                <strong id="subtotal">Rp0</strong>
+            </div>
+            <p>Biaya pengiriman akan dikonfirmasi setelah checkout.</p>
+            <button class="button button-dark checkout-button" id="checkoutButton">
+                Lanjut Pembayaran <span>↗</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-wrap" id="checkoutModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-checkout></div>
+
+        <section class="checkout-modal">
+            <button class="close-button modal-close" data-close-checkout>×</button>
+            <p class="eyebrow">SATU LANGKAH LAGI</p>
+            <h2 id="checkoutTitle">Lengkapi <em>pesananmu.</em></h2>
+            <p class="modal-intro">Isi informasi berikut untuk menyiapkan pesananmu.</p>
+
+            <form id="checkoutForm">
+                <div class="form-grid">
+                    <label>
+                        Nama lengkap
+                        <input name="name" type="text" placeholder="Nama penerima" required>
+                    </label>
+
+                    <label>
+                        Nomor WhatsApp
+                        <input name="phone" type="tel" placeholder="08xxxxxxxxxx" required pattern="[0-9+ -]{9,16}">
+                    </label>
+                </div>
+
+                <label>
+                    Alamat pengiriman
+                    <textarea name="address" rows="3" placeholder="Nama jalan, nomor rumah, kecamatan..." required></textarea>
+                </label>
+
+                <div class="form-grid">
+                    <label>
+                        Tanggal pengiriman
+                        <input name="date" type="date" id="deliveryDate" required>
+                    </label>
+
+                    <label>
+                        Metode pembayaran
+                        <select name="payment" required>
+                            <option value="">Pilih metode</option>
+                            <option>Transfer bank</option>
+                            <option>QRIS</option>
+                            <option>COD (jika tersedia)</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label>
+                    Catatan untuk toko
+                    <textarea name="note" rows="2" placeholder="Contoh: tulis ucapan di kartu (opsional)"></textarea>
+                </label>
+
+                <div class="checkout-total">
+                    <span>Total pesanan</span>
+                    <strong id="checkoutTotal">Rp0</strong>
+                </div>
+
+                <button class="button button-dark checkout-button" type="submit">
+                    Buat Pesanan <span>♡</span>
+                </button>
+
+                <p class="form-disclaimer">
+                    Pesanan akan disimpan ke sistem Sweeté setelah berhasil diproses.
+                </p>
+            </form>
+        </section>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div class="detail-modal-wrap" id="detailModal">
+        <div class="detail-backdrop" data-close-detail></div>
+        <section class="detail-modal">
+            <button class="close-button detail-close" data-close-detail>×</button>
+            <div id="productDetailContent"></div>
+        </section>
+    </div>
+
+    <!-- REVIEW MODAL -->
+    <div class="modal-wrap" id="reviewModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-review></div>
+        <section class="checkout-modal review-modal">
+            <button class="close-button modal-close" data-close-review>×</button>
+            <p class="eyebrow">BAGIKAN PENGALAMANMU</p>
+            <h2>Ulasan <em>manismu.</em></h2>
+            <p class="modal-intro" id="reviewProductName"></p>
+
+            <form id="reviewForm">
+                <input type="hidden" id="reviewOrderId">
+                <input type="hidden" id="reviewProductId">
+
+                <label>
+                    Nama kamu
+                    <input type="text" id="reviewCustomerName" required maxlength="80">
+                </label>
+
+                <label>
+                    Rating
+                    <select id="reviewRating" required>
+                        <option value="5">★★★★★ — Sangat suka</option>
+                        <option value="4">★★★★ — Suka</option>
+                        <option value="3">★★★ — Cukup</option>
+                        <option value="2">★★ — Kurang</option>
+                        <option value="1">★ — Tidak suka</option>
+                    </select>
+                </label>
+
+                <label>
+                    Ceritakan pengalamanmu
+                    <textarea id="reviewComment" rows="4" maxlength="500" placeholder="Tulis ulasanmu di sini..." required></textarea>
+                </label>
+
+                <button class="button button-dark checkout-button" type="submit">
+                    Kirim Ulasan <span>♡</span>
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

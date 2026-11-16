@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | Sweeté Pâtisserie</title>
+
+    <link rel="stylesheet" href="owner.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<section id="loginSection" class="login-section">
+    <div class="login-card">
+        <div class="brand-logo">S</div>
+        <p class="brand-name">Sweeté Pâtisserie</p>
+        <h1>Welcome Back</h1>
+        <p class="login-description">Silakan login untuk mengelola toko Anda.</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="ownerEmail">Email</label>
+                <input type="email" id="ownerEmail" placeholder="Masukkan email owner" required>
+            </div>
+            <div class="form-group">
+                <label for="ownerPassword">Password</label>
+                <input type="password" id="ownerPassword" placeholder="Masukkan password" required>
+            </div>
+            <button type="submit" class="btn-primary">Login Dashboard</button>
+            <p id="loginError" class="message"></p>
+        </form>
+
+        <a href="index.html" class="back-link">← Kembali ke halaman toko</a>
+    </div>
+</section>
+
+<section id="dashboardSection" class="dashboard-section" hidden>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo small">S</div>
+            <div>
+                <h2>Sweeté</h2>
+                <p>Owner Dashboard</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-link active"><span>⌂</span> Overview</a>
+            <a href="#reports" class="nav-link"><span>▥</span> Laporan Penjualan</a>
+            <a href="#products" class="nav-link"><span>♧</span> Kelola Menu</a>
+            <a href="#orders" class="nav-link"><span>▤</span> Pesanan</a>
+            <a href="#settings" class="nav-link"><span>⚙</span> Pengaturan Toko</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="index.html" class="store-link">Lihat Toko ↗</a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="dashboard-header">
+            <div>
+                <p class="eyebrow">SWEETÉ PÂTISSERIE</p>
+                <h1>Dashboard Overview</h1>
+                <p class="header-description">Selamat datang kembali! Kelola toko Anda di sini.</p>
+            </div>
+
+            <div class="header-actions">
+                <button type="button" id="notificationBtn" class="notification-btn" title="Aktifkan notifikasi">
+                    ♧ <span id="notificationCount">0</span>
+                </button>
+                <div class="owner-profile">
+                    <div class="profile-avatar">O</div>
+                    <div>
+                        <strong>Owner</strong>
+                        <p>Administrator</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="dashboard-overview">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">STORE PERFORMANCE</p>
+                    <h2>Ringkasan Toko</h2>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">▤</div>
+                    <p>Total Pesanan</p>
+                    <h3 id="statTotalOrders">0</h3>
+                    <span>Seluruh pesanan masuk</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">◷</div>
+                    <p>Menunggu Konfirmasi</p>
+                    <h3 id="statPendingOrders">0</h3>
+                    <span>Pesanan perlu diperiksa</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">Rp</div>
+                    <p>Total Pendapatan</p>
+                    <h3 id="statRevenue">Rp0</h3>
+                    <span>Akumulasi pesanan selesai</span>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">♧</div>
+                    <p>Total Menu Aktif</p>
+                    <h3 id="statProducts">0</h3>
+                    <span>Menu tidak diarsipkan</span>
+                </div>
+            </div>
+
+            <div class="stock-summary-grid">
+                <div class="mini-stat-card">
+                    <span>Menu Stok Menipis</span>
+                    <strong id="statLowStock">0</strong>
+                </div>
+                <div class="mini-stat-card">
+                    <span>Menu Stok Habis</span>
+                    <strong id="statOutStock">0</strong>
+                </div>
+                <div class="mini-stat-card">
+                    <span>Pesanan Diproses</span>
+                    <strong id="statProcessing">0</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- SALES REPORT -->
+        <section id="reports" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SALES ANALYTICS</p>
+                    <h2>Laporan Penjualan</h2>
+                    <p class="section-description">Pantau pendapatan dari pesanan yang telah selesai.</p>
+                </div>
+
+                <select id="reportPeriod" class="report-period">
+                    <option value="daily">Harian (7 Hari)</option>
+                    <option value="weekly">Mingguan (4 Minggu)</option>
+                    <option value="monthly">Bulanan (6 Bulan)</option>
+                </select>
+            </div>
+
+            <div class="content-card">
+                <div class="report-summary">
+                    <div>
+                        <p>Total pendapatan periode ini</p>
+                        <h3 id="reportRevenue">Rp0</h3>
+                    </div>
+                    <div>
+                        <p>Pesanan selesai</p>
+                        <h3 id="reportOrders">0</h3>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+                <p class="chart-note">Grafik dihitung berdasarkan tanggal pesanan selesai menggunakan tanggal pesanan dibuat.</p>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section id="products" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PRODUCT MANAGEMENT</p>
+                    <h2>Kelola Menu</h2>
+                    <p class="section-description">Tambahkan, ubah, dan kelola menu Sweeté Pâtisserie.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <div>
+                        <h3 id="productFormTitle">Tambah Menu Baru</h3>
+                        <p>Lengkapi informasi produk yang ingin ditampilkan.</p>
+                    </div>
+                </div>
+
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="productName">Nama Menu</label>
+                            <input type="text" id="productName" placeholder="Contoh: Strawberry Cake" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCategory">Kategori</label>
+                            <select id="productCategory" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="cake">Cake</option>
+                                <option value="pastry">Pastry</option>
+                                <option value="cookies">Cookies</option>
+                                <option value="dessert">Dessert</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productPrice">Harga (Rp)</label>
+                            <input type="number" id="productPrice" min="0" placeholder="Contoh: 85000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productStock">Stok Produk</label>
+                            <input type="number" id="productStock" min="0" step="1" value="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productTag">Label Produk</label>
+                            <input type="text" id="productTag" placeholder="Contoh: Best Seller">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="productImage">URL Gambar Produk</label>
+                            <input type="url" id="productImage" placeholder="https://contoh.com/gambar.jpg">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="productDescription">Deskripsi Menu</label>
+                            <textarea id="productDescription" rows="4" placeholder="Tuliskan deskripsi produk..."></textarea>
+                        </div>
+                    </div>
+
+                    <label class="availability-option">
+                        <input type="checkbox" id="productAvailable" checked>
+                        <span>Menu tersedia untuk pelanggan</span>
+                    </label>
+
+                    <div class="form-actions">
+                        <button type="submit" id="productSubmitBtn" class="btn-primary">+ Tambahkan Menu</button>
+                        <button type="button" id="cancelEditBtn" class="btn-secondary" hidden>Batal Edit</button>
+                    </div>
+
+                    <p id="productMessage" class="message"></p>
+                </form>
+            </div>
+
+            <div class="content-card product-list-card">
+                <div class="card-heading">
+                    <div>
+                        <h3>Daftar Menu</h3>
+                        <p>Semua menu yang tersimpan di database.</p>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Menu</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <tr><td colspan="6" class="empty-state">Memuat data menu...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORDERS -->
+        <section id="orders" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ORDER MANAGEMENT</p>
+                    <h2>Pesanan Pelanggan</h2>
+                    <p class="section-description">Pantau dan perbarui status pesanan pelanggan.</p>
+                </div>
+                <button id="refreshOrdersBtn" class="btn-secondary">↻ Refresh Pesanan</button>
+            </div>
+
+            <div class="content-card">
+                <div class="order-toolbar">
+                    <input type="search" id="orderSearch" placeholder="Cari nama pelanggan atau kode pesanan...">
+                    <select id="orderStatusFilter">
+                        <option value="all">Semua Status</option>
+                        <option value="Menunggu konfirmasi">Menunggu Konfirmasi</option>
+                        <option value="Diproses">Diproses</option>
+                        <option value="Sedang dikirim">Sedang Dikirim</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Dibatalkan">Dibatalkan</option>
+                    </select>
+                </div>
+                <div id="ordersContainer" class="orders-container">
+                    <p class="empty-state">Memuat data pesanan...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORE SETTINGS -->
+        <section id="settings" class="content-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">STORE CONFIGURATION</p>
+                    <h2>Pengaturan Toko</h2>
+                    <p class="section-description">Kelola informasi yang akan ditampilkan kepada pelanggan.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <h3>Informasi Sweeté Pâtisserie</h3>
+                    <p>Perubahan akan disimpan ke database.</p>
+                </div>
+
+                <form id="storeSettingsForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="storeName">Nama Toko</label>
+                            <input type="text" id="storeName" placeholder="Sweeté Pâtisserie" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storeWhatsapp">Nomor WhatsApp</label>
+                            <input type="tel" id="storeWhatsapp" placeholder="Contoh: 6281234567890">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="storeAddress">Alamat Toko</label>
+                            <textarea id="storeAddress" rows="3" placeholder="Masukkan alamat toko"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="storeHours">Jam Operasional</label>
+                            <input type="text" id="storeHours" placeholder="Contoh: Senin - Sabtu, 08.00 - 17.00">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="storeInfo">Informasi Tambahan</label>
+                            <textarea id="storeInfo" rows="4" placeholder="Informasi toko untuk pelanggan..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="saveSettingsBtn" class="btn-primary">Simpan Pengaturan</button>
+                    <p id="settingsMessage" class="message"></p>
+                </form>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>© 2026 Sweeté Pâtisserie. Made with care and sweetness.</p>
+        </footer>
+
+    </main>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="owner.js"></script>
+</body>
+</html>
